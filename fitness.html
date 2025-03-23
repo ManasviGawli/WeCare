@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness & Wellness</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(to right, #28a745, #218838);
+            color: white;
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        p.slogan {
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        section {
+            padding: 40px 20px;
+            margin: 40px auto;
+            max-width: 1200px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            font-weight: 600;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .card-container div {
+            background-color: #f1f8e9;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .card-container div:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-container h3 {
+            color: #388e3c;
+            font-size: 2rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .card-container p {
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #555;
+            font-weight: 400;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 20px;
+            background-color: #28a745;
+            color: white;
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #218838;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+
+        footer p {
+            font-size: 1rem;
+        }
+
+        .footer-link {
+            color: #ff9a8b;
+            text-decoration: none;
+        }
+
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .card-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Fitness & Wellness</h1>
+    <p class="slogan">Achieve Your Best Self Through Fitness & Wellness</p>
+</header>
+
+<section id="fitness-tips">
+    <h2>Fitness Tips</h2>
+    <p>Boost your health and strength with these simple fitness tips.</p>
+    <div class="card-container">
+        <div>
+            <h3>Cardio Workouts</h3>
+            <p>Incorporating regular cardio exercises into your routine improves heart health, burns fat, and increases endurance.</p>
+        </div>
+        <div>
+            <h3>Strength Training</h3>
+            <p>Building muscle not only improves your appearance but also boosts metabolism and strengthens bones.</p>
+        </div>
+        <div>
+            <h3>Stretching</h3>
+            <p>Stretching is crucial for flexibility, reducing injury risks, and improving muscle recovery after workouts.</p>
+        </div>
+    </div>
+    <a href="#wellness-tips" class="button">Learn More About Wellness</a>
+</section>
+
+<section id="wellness-tips">
+    <h2>Wellness Tips</h2>
+    <p>True wellness is a balance of physical and mental health. Discover tips for living a healthier life.</p>
+    <div class="card-container">
+        <div>
+            <h3>Mental Health</h3>
+            <p>Take care of your mind with practices like mindfulness, meditation, and quality sleep to reduce stress.</p>
+        </div>
+        <div>
+            <h3>Healthy Eating</h3>
+            <p>Fuel your body with whole, nutritious foods. A balanced diet is key to physical and mental well-being.</p>
+        </div>
+        <div>
+            <h3>Hydration</h3>
+            <p>Drink plenty of water throughout the day to maintain energy levels, improve digestion, and nourish your skin.</p>
+        </div>
+    </div>
+    <a href="#contact" class="button">Get Started on Your Wellness Journey</a>
+</section>
+
+<footer>
+    <p>&copy; 2024 Fitness & Wellness. All rights reserved. <a href="#" class="footer-link">Privacy Policy</a></p>
+</footer>
+
+<script>
+    // JavaScript can be added for further interactivity, such as dynamic FAQ sections or a "Back to Top" button.
+</script>
+
+</body>
+</html>

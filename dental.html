@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DentalCare - Your Guide to Oral Health</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f1f8fb;
+            color: #555;
+        }
+
+        header {
+            background: linear-gradient(to right, #00aaff, #0066cc);
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        h1 {
+            font-size: 3rem;
+            letter-spacing: 1px;
+        }
+
+        section {
+            padding: 30px;
+            margin: 20px auto;
+            max-width: 1100px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        ul li {
+            margin: 15px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        ul li:before {
+            content: '✔';
+            color: #00aaff;
+            position: absolute;
+            left: 0;
+        }
+
+        .conditions h3 {
+            font-size: 1.8rem;
+            margin: 10px 0;
+            color: #0066cc;
+        }
+
+        .conditions p {
+            color: #777;
+            line-height: 1.6;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+
+        footer p {
+            font-size: 1rem;
+        }
+
+        .important {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .tips-container, .conditions-container, .safety-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .tips-container div, .conditions-container div, .safety-container div {
+            padding: 20px;
+            background-color: #eaf7ff;
+            border-radius: 8px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .tips-container div:hover, .conditions-container div:hover, .safety-container div:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 20px;
+            background-color: #00aaff;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #0077cc;
+        }
+
+        .footer-link {
+            color: #00aaff;
+            text-decoration: none;
+        }
+
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .tips-container, .conditions-container, .safety-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>DentalCare - Your Guide to Oral Health</h1>
+</header>
+
+<section id="oral-care-tips">
+    <h2>Oral Care Tips</h2>
+    <p>Good oral hygiene is essential for healthy teeth and gums. Here are some tips for maintaining a bright and healthy smile:</p>
+    <div class="tips-container">
+        <div>
+            <h3>Brush Twice a Day</h3>
+            <p>Use fluoride toothpaste and a soft-bristled brush to brush your teeth for at least two minutes.</p>
+        </div>
+        <div>
+            <h3>Floss Daily</h3>
+            <p>Flossing helps remove plaque and food particles from between your teeth that your toothbrush can't reach.</p>
+        </div>
+        <div>
+            <h3>Eat a Healthy Diet</h3>
+            <p>Eating foods rich in vitamins and minerals helps strengthen your teeth and gums.</p>
+        </div>
+        <div>
+            <h3>Visit the Dentist Regularly</h3>
+            <p>Regular visits to the dentist help detect issues early and maintain good oral health.</p>
+        </div>
+    </div>
+    <a href="#dental-safety" class="button">Learn More Safety Tips</a>
+</section>
+
+<section id="common-dental-conditions">
+    <h2>Common Dental Conditions</h2>
+    <div class="conditions-container">
+        <div>
+            <h3>Tooth Decay (Cavities)</h3>
+            <p>Decay occurs when plaque and bacteria break down the enamel of the teeth. Regular brushing, flossing, and visits to the dentist can help prevent decay.</p>
+        </div>
+        <div>
+            <h3>Gum Disease</h3>
+            <p>Gingivitis and periodontitis can cause swollen, bleeding gums, and tooth loss. Good oral hygiene is essential to prevent this condition.</p>
+        </div>
+        <div>
+            <h3>Tooth Sensitivity</h3>
+            <p>Exposed roots can lead to sensitivity to hot or cold. Use desensitizing toothpaste and consult your dentist.</p>
+        </div>
+        <div>
+            <h3>Bad Breath</h3>
+            <p>Bad breath can be caused by poor hygiene, food choices, or medical conditions. Regular brushing and a healthy diet help keep it in check.</p>
+        </div>
+    </div>
+</section>
+
+<section id="dental-safety">
+    <h2>Dental Safety Tips</h2>
+    <div class="safety-container">
+        <div>
+            <h3>Wear a Mouthguard</h3>
+            <p>Protect your teeth during sports by wearing a mouthguard to prevent injury.</p>
+        </div>
+        <div>
+            <h3>Avoid Chewing Hard Objects</h3>
+            <p>Chewing on hard candy or ice can damage your teeth. Avoid these habits to keep your teeth safe.</p>
+        </div>
+        <div>
+            <h3>Use Toothpaste with Fluoride</h3>
+            <p>Fluoride helps prevent tooth decay and strengthens enamel. Make sure your toothpaste contains it.</p>
+        </div>
+        <div>
+            <h3>Protect Teeth from Acids</h3>
+            <p>After consuming acidic foods and drinks, rinse your mouth with water to reduce enamel erosion.</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2024 DentalCare. All rights reserved. <a href="#" class="footer-link">Privacy Policy</a></p>
+</footer>
+
+<script>
+    // JavaScript can be used for future interactivity, like expanding sections or adding animations
+</script>
+
+</body>
+</html>

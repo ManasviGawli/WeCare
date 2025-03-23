@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Healthcare Website</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="doctor.jpg"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+<body>
+    <section id="hero" >
+        <nav class="navigation">
+                            <span class="nav-icon"></span>
+            </label>
+            <a href="#" class="logo"><span>We</span>Care</a>
+            <ul class="menu">
+                <li><a href="#">Find A Doctor</a></li>
+                <li><a href="#">Our Services</a></li>
+                <li><a href="#Testimonials">Testimonials</a></li>
+            </ul>
+            <a href="appointment.html" class="nav-appointment-btn">Appointment</a>
+        </nav>
+        
+        <div class="hero-content">
+            <div class ="hero-text">
+                <h1>Feel Better About Finding HealthcCare</h1>
+                <p>Experience peace of mind with WeCare. We’re here to support your health journey with compassionate care and personalized solutions. Trust us to help you feel your best, every step of the way.</p>
+                <div class="hero-text-btns">
+                    <a href="#">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        Find Doctor</a>
+                    <a href="#">
+                        <i class="fa-solid fa-check"></i>
+                        Book Appointment</a>
+                </div>
+            </div>
+            <div class="hero-img">
+                <img src="doctor.jpg" alt="doctor">
+            </div>
+    </section>
+    <div class="appointment-search-container">
+        <h3>
+        Find Best Healthcare
+        </h3>
+        <div class="appointment-search">
+            <div class="appo-search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <label for="specialistSelect"></label>
+                <input type="text" placeholder="Search Doctor Here"> 
+            </div>
+            
+            <div id="doctor-info" style="display:none; margin: 20px; padding: 20px; border: 1px solid #ddd; border-radius: 10px;">
+                <h3>Doctor Information</h3>
+                <div id="doctor-details">
+                    <!-- Doctor details will be populated here -->
+                </div>
+            </div>
+            
+            <div class="appo-search-box">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <input type="text" placeholder="search for location"> 
+                    <a href="map.html">View Locations on Map</a>
+                    
+
+
+            </div>
+            <button>
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </div>
+    </div>
+    <section class="what-we-provide">
+        <!--Box 1-->
+        <div class="w-info-box w-info-box1">
+            <div class="w-info-icon">
+                <i class="fa-solid fa-capsules"></i>
+            </div>
+            <div class="w-info-text">
+                <strong>
+                    Specialised Service
+                </strong>
+                <p>WeCare offers expert doctor guidance to help you make informed healthcare decisions</p>
+            </div>
+        </div>
+        <!--Box 2-->
+        <div class="w-info-box w-info-box2">
+            <div class="w-info-icon">
+                <i class="fa-regular fa-comment"></i>
+            </div>
+            <div class="w-info-text">
+                <strong>
+                    24/7 Advanced Care
+                </strong>
+                <p>WeCare offers advanced care through expert consultations, personalized health guidance, and timely medical advice, available 24/7</p>
+            </div>
+        </div>
+        <!--box 3-->
+        <div class="w-info-box w-info-box3">
+            <div class="w-info-icon">
+                <i class="fa-solid fa-square-poll-horizontal"></i>
+            </div>
+            <div class="w-info-text">
+                <strong>
+                    Get Result Online
+                </strong>
+                <p>Get trusted medical advice from the comfort of your home.
+                    Simplify your healthcare with our easy online consultations</p>
+            </div>
+        </div>
+    </section>
+    <!--Our Story-->
+    <section id="our-story">
+        <div class="our-story-img">
+            <img src="doctor-story.jpg" alt="Dr Image">
+            <a href="Testimonials" class="story-play-btn">
+                <i class="fa-solid fa-play"></i>
+               
+            </a>
+        </div>
+        <div class="our-story-text">
+            <h2>Short Story About Our Clinic</h2>
+            <p>At WeCare, our journey began with a simple goal: to provide healthcare that truly cares. What started as a small clinic with a handful of passionate doctors has now grown into a trusted place for thousands seeking compassionate, high-quality care. We believe that healthcare isn’t just about treating symptoms, but about understanding and supporting each person’s unique needs. Today, WeCare continues to thrive as a community-focused clinic, always putting patients first and working towards a healthier tomorrow.</p>
+            <div class="story-number-container">
+                <!--Box1-->
+                <div class="story-number-box s-n-box1">
+                    <strong>
+                        1000+
+                    </strong>
+                    <span>Happy Patients</span>
+                </div>
+                <!--Box2-->
+                <div class="story-number-box s-n-box2">
+                    <strong>
+                        215+
+                    </strong>
+                    <span>Experts Doctor's</span>
+                </div>
+                <!--Box3-->
+                <div class="story-number-box s-n-box3">
+                    <strong>
+                        310+
+                    </strong>
+                    <span>Hospitals</span>
+                </div>
+                <!--Box4-->
+                <div class="story-number-box s-n-box4">
+                    <strong>
+                        106+
+                    </strong>
+                    <span>Award Wining</span>
+                </div>
+            </div>
+        </div>
+    </section><!--Story End-->
+    <!--Our Services-->
+    <section id="our-services">
+        <div class="services-heading">
+            <div class="services-heading-text">
+                <strong>Our Services</strong>
+                <a href="Our Services"></a>
+                <h2>High quality services for you</h2>
+            </div>
+            <!--btns-->
+            <div class="services-slide-btns">
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+                
+            </div>
+        </div>
+
+        <!--Box Container-->
+        <div class="services-box-container">
+
+
+            <div class="swiper mySwiperservices">
+                <div class="swiper-wrapper">
+                    <!--slide 1-->
+                  <div class="swiper-slide">
+                    <div class="services-box s-box1">
+                        <i class="fa-solid fa-tooth"></i>
+                        <strong>
+                             Dental Care
+                        </strong>
+                         <p>At WeCare, our dental experts offer services from routine check-ups to advanced treatments, focusing on preventive care and personalized solutions. Using the latest technology, we ensure your smile stays healthy and bright</p>
+                         <a href="dental.html">Read More</a>
+                    </div>
+                  </div>
+                  <!--slide 2-->
+                  <div class="swiper-slide">
+                    <div class="services-box s-box2">
+                        <i class="fa-solid fa-eye"></i>
+                        <strong>
+                            Eye Care
+                        </strong>
+                         <p>At WeCare, our expert eye care specialists offer comprehensive services, including eye exams, vision correction, and treatments for conditions like cataracts and glaucoma. We use advanced technology and provide personalized care to ensure the best outcomes for your eye health.</p>
+                         <a href="eye_care.html">Read More</a>
+                    </div>
+                  </div>
+                  <!--slide 3-->
+                  <div class="swiper-slide">
+                    <div class="services-box s-box3">
+                        <i class="fa-solid fa-face-smile"></i>
+                        <strong>
+                            Skin Care 
+                        </strong>
+                         <p>At WeCare, our skin care experts provide personalized treatments for various concerns like acne, eczema, and aging. We use advanced technology and natural solutions to help you achieve and maintain healthy, glowing skin.</p>
+                         <a href="skin.html">Read More</a>
+                    </div>
+                  </div>
+                  <!--slide 4-->
+                  <div class="swiper-slide">
+                    <div class="services-box s-box4">
+                        <i class="fa-solid fa-tooth"></i>
+                        <strong>
+                            Fitness and Wellness
+                        </strong>
+                         <p>At WeCare, we take a holistic approach to health with personalized fitness plans, nutrition advice, and lifestyle tips. Our expert team supports you in achieving your health goals, focusing on physical activity, mental well-being, and balanced nutrition.</p>
+                         <a href="fitness.html">Read More</a>
+                    </div>
+                  </div>
+                </div>                
+            </div>
+            
+        </div><!--container-end-->
+        <!--btn-->
+        <span class="servie-help-btn">Contact Us For Need Any Help And Servies<a href="#"> Let's Get Strated</a></span>
+    </section>
+    <!--service-end-------->
+
+    <section id="why-choose-us">
+
+       <div class="why-choose-us-left">
+
+        <h3>Why Choose Us</h3>
+        <div class="why-choose-box-container">
+            <div class="why-choose-box">
+                <i class="fa-solid fa-check"></i>
+                <div class="why-choose-box-text">
+                    <strong>Expert Doctors</strong>
+                    <p>Our skilled doctors provide trusted healthcare and personalized care for your needs.</p>
+                </div> 
+            </div>
+            <!--2-->
+            <div class="why-choose-box">
+                <i class="fa-solid fa-check"></i>
+                <div class="why-choose-box-text">
+                    <strong>Easy Online Access</strong>
+                    <p>Get consultations and health advice anytime, from the comfort of your home.</p>
+                </div> 
+            </div>
+            <!--3-->
+            <div class="why-choose-box">
+                <i class="fa-solid fa-check"></i>
+                <div class="why-choose-box-text">
+                    <strong>Caring and Friendly Team</strong>
+                    <p>Our team is here to support you with understanding and kindness every step of the way.</p>
+                </div> 
+            </div>
+            <!--4-->
+            <div class="why-choose-box">
+                <i class="fa-solid fa-check"></i>
+                <div class="why-choose-box-text">
+                    <strong>24/7 Availability</strong>
+                    <p>Health concerns don’t follow a schedule. That’s why we’re available round-the-clock to support you.</p>
+                </div> 
+            </div>
+        </div><!--container-end-->
+        <a href="#" class="why-choose-us-btn">Make Appointment</a>
+       </div><!--left-end-->
+      
+       <div class="why-choose-us-right">
+        <h3>Emergency?</br>
+        Contact Us
+    </h3>
+    <p>If you’re facing a medical emergency or need urgent assistance, please reach out to us right away. Our team is ready to help and guide you through any situation.</p>
+    <!--Container-->
+    <div class="w-right-contact-container">
+        <div class="w-right-contact-box">
+            <i class="fa-solid fa-phone"></i>
+            <div class="w-right-contact-box-text">
+                <span>Call Us Now</span>
+                <strong>+91 9702461294</strong>
+                <strong>+91 8591543275</strong>
+            </div>
+        </div><!--phone-end-->
+        <!--Email-->
+        <div class="w-right-contact-box">
+            <i class="fa-solid fa-envelope"></i>
+            <div class="w-right-contact-box-text">
+                <span>Mail Us</span>
+                <strong>weCare@gmail.com</strong>
+            </div>
+        </div>
+
+    </div>
+
+       </div>
+    </section>
+    <!---Team-->
+   
+
+
+    <section id="subscribe">
+        <h3>Subscribe for new update from WeCare</h3>
+        <form class="subscribe-box">
+            <input type="email" placeholder="abc@gmail.com">
+            <button>Subscribe</button>
+        </form>
+    </section>
+
+
+
+
+    <!----Foooter-->
+    <footer class="footer">
+        <div class="footer-container">
+          <!-- About Us -->
+          <div class="footer-about">
+            <a href="#" class="logo"><span>We</span>Care</a>
+            <p>Providing trusted medical services to ensure your well-being. Dedicated to care and compassion for a healthier tomorrow.</p>
+          </div>
+    
+          <!-- Services -->
+          <div class="footer-services">
+            <h3>Our Services</h3>
+            <ul>
+              <li><a href="consultation">Online Consultation</a></li>
+              <li><a href="appointment.html">Book Appointments</a></li>
+              <li><a href="specialists">Meet Specialists</a></li>
+              <li><a href="#health-tips">Health Tips</a></li>
+            </ul>
+          </div>
+    
+          <!-- Contact Info -->
+          <div class="footer-contact">
+            <h3>Contact Us</h3>
+            <p>Email: <a href="mailto:info@healthcareplus.com">info@healthcareplus.com</a></p>
+            <p>Phone: <a href="tel:+1234567890">+1 234 567 890</a></p>
+            <p>Address: 123 Health Lane, Wellness City, HC 45678</p>
+          </div>
+    
+          <!-- Social Media -->
+          <div class="footer-social">
+            <h3>Follow Us</h3> 
+            <i class="fa-brands fa-facebook"></i>           
+            <a href="#">Facebook</a>
+            <i class="fa-brands fa-twitter"></i>
+            <a href="#">Twitter</a>
+            <i class="fa-brands fa-instagram"></i>
+            <a href="#">Instagram</a></br>
+            <i class="fa-brands fa-linkedin"></i>
+            <a href="#">LinkedIn</a>
+            
+            
+            
+            
+          </div>
+        </div>
+    
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+          <p>&copy; 2024 HealthCare Plus. All Rights Reserved.</p>
+        </div>
+      </footer>
+
+     <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    /*services-slider*/
+    var swiper = new Swiper(".mySwiperservices", {
+      slidesPerView: 1,
+      spaceBetween: 10,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      navigation:{
+        nextEl:".swiper-button-next",
+        prevEl:"swiper-button-prev",
+      }, 
+      breakpoints: {
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        768: {
+          slidesPerView: 4,
+          spaceBetween: 40,
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 20,
+        },
+      },
+    });
+
+
+    var swiper = new Swiper(".mySwiperteam", {
+      slidesPerView: 1,
+      spaceBetween: 10,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      breakpoints: {
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        768: {
+          slidesPerView: 4,
+          spaceBetween: 40,
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 50,
+        },
+      },
+    });
+
+
+
+  </script>
+  <script>
+    const doctors = [
+        { name: "Dr. John Doe", specialization: "Cardiologist", location: "New York", contact: "123-456-7890" },
+        { name: "Dr. Jane Smith", specialization: "Dermatologist", location: "Los Angeles", contact: "987-654-3210" },
+        { name: "Dr. Alice Johnson", specialization: "Pediatrician", location: "Chicago", contact: "456-789-0123" },
+        { name: "Dr. Robert Brown", specialization: "Neurologist", location: "New York", contact: "321-654-0987" }
+    ];
+
+    function searchDoctor() {
+        const doctorInput = document.getElementById("doctor-search").value.toLowerCase();
+        const locationInput = document.getElementById("location-search").value.toLowerCase();
+
+        // Filter doctors by name, specialization, or location
+        const results = doctors.filter(doctor =>
+            (doctor.name.toLowerCase().includes(doctorInput) ||
+            doctor.specialization.toLowerCase().includes(doctorInput)) &&
+            doctor.location.toLowerCase().includes(locationInput)
+        );
+
+        const doctorDetailsDiv = document.getElementById("doctor-details");
+        doctorDetailsDiv.innerHTML = ""; // Clear previous results
+
+        if (results.length > 0) {
+            results.forEach(doctor => {
+                const doctorCard = `
+                    <div style="margin-bottom: 10px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                        <strong>Name:</strong> ${doctor.name} <br>
+                        <strong>Specialization:</strong> ${doctor.specialization} <br>
+                        <strong>Location:</strong> ${doctor.location} <br>
+                        <strong>Contact:</strong> ${doctor.contact}
+                    </div>
+                `;
+                doctorDetailsDiv.innerHTML += doctorCard;
+            });
+            document.getElementById("doctor-info").style.display = "block";
+        } else {
+            doctorDetailsDiv.innerHTML = "<p>No doctors found for the given search criteria. Please try again.</p>";
+            document.getElementById("doctor-info").style.display = "block";
+        }
+    }
+
+    document.querySelector(".appointment-search button").addEventListener("click", searchDoctor);
+</script>
+
+<script>
+    const doctor = [
+        { name: "Dr. John Doe", specialization: "Cardiologist", location: "New York", contact: "123-456-7890" },
+        { name: "Dr. Jane Smith", specialization: "Dermatologist", location: "Los Angeles", contact: "987-654-3210" },
+        { name: "Dr. Alice Johnson", specialization: "Pediatrician", location: "Chicago", contact: "456-789-0123" },
+        { name: "Dr. Robert Brown", specialization: "Neurologist", location: "New York", contact: "321-654-0987" }
+    ];
+
+    function searchDoctor() {
+        const doctorInput = document.getElementById("doctor-search").value.toLowerCase();
+        const locationInput = document.getElementById("location-search").value.toLowerCase();
+
+        // Filter doctors by name, specialization, or location
+        const results = doctors.filter(doctor =>
+            (doctor.name.toLowerCase().includes(doctorInput) ||
+            doctor.specialization.toLowerCase().includes(doctorInput)) &&
+            doctor.location.toLowerCase().includes(locationInput)
+        );
+
+        const doctorDetailsDiv = document.getElementById("doctor-details");
+        doctorDetailsDiv.innerHTML = ""; // Clear previous results
+
+        if (results.length > 0) {
+            results.forEach(doctor => {
+                const doctorCard = `
+                    <div style="margin-bottom: 10px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                        <strong>Name:</strong> ${doctor.name} <br>
+                        <strong>Specialization:</strong> ${doctor.specialization} <br>
+                        <strong>Location:</strong> ${doctor.location} <br>
+                        <strong>Contact:</strong> ${doctor.contact}
+                    </div>
+                `;
+                doctorDetailsDiv.innerHTML += doctorCard;
+            });
+            document.getElementById("doctor-info").style.display = "block";
+        } else {
+            doctorDetailsDiv.innerHTML = "<p>No doctors found for the given search criteria. Please try again.</p>";
+            document.getElementById("doctor-info").style.display = "block";
+        }
+    }
+
+    document.querySelector(".appointment-search button").addEventListener("click", searchDoctor);
+</script>
+<script>
+    const specialists = [
+      {
+        specialization: "Cardiologist",
+        address: "123 Heart Care Lane, New York, NY",
+        contact: "Phone: (555) 123-4567, Email: cardiologist@clinic.com"
+      },
+      {
+        specialization: "Dermatologist",
+        address: "456 Skin Health Blvd, Los Angeles, CA",
+        contact: "Phone: (555) 234-5678, Email: dermatologist@clinic.com"
+      },
+      {
+        specialization: "Orthopedic Surgeon",
+        address: "789 Bone Repair Rd, Chicago, IL",
+        contact: "Phone: (555) 345-6789, Email: orthopedic@clinic.com"
+      },
+      {
+        specialization: "Pediatrician",
+        address: "101 Child Care St, Houston, TX",
+        contact: "Phone: (555) 456-7890, Email: pediatrician@clinic.com"
+      }
+    ];
+
+    function showSpecialistInfo() {
+      const specialistSelect = document.getElementById('specialistSelect');
+      const infoDiv = document.getElementById('info');
+      const detailsParagraph = document.getElementById('details');
+      
+      const selectedIndex = specialistSelect.value;
+
+      if (selectedIndex) {
+        const selectedSpecialist = specialists[selectedIndex];
+        detailsParagraph.innerHTML = `
+          <strong>Specialization:</strong> ${selectedSpecialist.specialization}<br>
+          <strong>Address:</strong> ${selectedSpecialist.address}<br>
+          <strong>Contact:</strong> ${selectedSpecialist.contact}
+        `;
+        infoDiv.style.display = 'block';
+      } else {
+        detailsParagraph.textContent = 'Please select a specialist.';
+        infoDiv.style.display = 'none';
+      }
+    }
+  </script>
+
+    
+</body>
+</html>           
+            
+            

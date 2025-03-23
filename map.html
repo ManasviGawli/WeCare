@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare Website</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background-color: #0074D9;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 2rem auto;
+        }
+
+        .map-container {
+            margin-top: 2rem;
+        }
+
+        #map {
+            width: 100%;
+            height: 400px;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        footer {
+            background-color: #333;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+
+        #specialty-select, #location-input, #location-btn {
+            padding: 0.5rem;
+            font-size: 1rem;
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Welcome to HealthCare Services</h1>
+        <p>Your Health, Our Priority</p>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+
+        <!-- Location Input -->
+        <div id="location-container">
+            <label for="location-input">Search Your Location:</label>
+            <input type="text" id="location-input" placeholder="search here">
+            <button id="location-btn">Submit</button>
+        </div>
+
+        <!-- Dropdown to select specialty (hidden initially) -->
+        <div id="specialty-container" style="display: none;">
+            <select id="specialty-select">
+                <option value="">Select a Specialty</option>
+                <option value="skin-specialist">Skin Specialist</option>
+                <option value="eye-specialist">Eye Specialist</option>
+                <option value="dentist">Dentist</option>
+                <option value="fitness-wellness">Fitness and Wellness</option>
+            </select>
+        </div>
+
+        <!-- Map Section -->
+        <section class="map-container">
+            <div id="map"></div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 HealthCare Services. All rights reserved.</p>
+    </footer>
+
+    <!-- Leaflet Map Script -->
+    <script>
+        // Initialize the map
+        var map = L.map('map').setView([19.0853, 72.8310], 13); // Default view for Santacruz
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Predefined locations for various places
+        var locations = {
+            "jogeshwari": {
+    "skin-specialist": [
+        { 
+            name: "Dr. Ayesha Patel", 
+            specialty: "Dermatologist", 
+            contact: "+91 987 654 3210", 
+            address: "Aesthetic Skin Clinic, Jogeshwari West, Landmark: Near Jogeshwari West Railway Station, Mumbai - 400102", 
+            coordinates: [19.1540, 72.8465] 
+        },
+        { 
+            name: "Dr. Neelam Jain", 
+            specialty: "Dermatologist", 
+            contact: "+91 981 234 5678", 
+            address: "Jain Skin Care Clinic, Jogeshwari East, Landmark: Near Jogeshwari East Railway Station, Mumbai - 400060", 
+            coordinates: [19.1570, 72.8490] 
+        }
+    ],
+    "eye-specialist": [
+        { 
+            name: "Dr. Ramesh Verma", 
+            specialty: "Ophthalmologist", 
+            contact: "+91 993 777 2222", 
+            address: "Verma Eye Clinic, Jogeshwari West, Landmark: Opposite Jogeshwari West Bus Depot, Mumbai - 400102", 
+            coordinates: [19.1550, 72.8475] 
+        },
+        { 
+            name: "Dr. Sonali Desai", 
+            specialty: "Ophthalmologist", 
+            contact: "+91 932 765 4321", 
+            address: "Desai Eye Clinic, Jogeshwari East, Landmark: Near Jogeshwari East Bus Depot, Mumbai - 400060", 
+            coordinates: [19.1585, 72.8495] 
+        }
+    ],
+    "dentist": [
+        { 
+            name: "Dr. Sandeep Yadav", 
+            specialty: "Dentist", 
+            contact: "+91 981 234 5678", 
+            address: "Yadav Dental Care, Jogeshwari West, Landmark: Near Jogeshwari West Railway Station, Mumbai - 400102", 
+            coordinates: [19.1560, 72.8480] 
+        },
+        { 
+            name: "Dr. Priya Mehta", 
+            specialty: "Dentist", 
+            contact: "+91 932 876 5432", 
+            address: "Mehta Dental Clinic, Jogeshwari East, Landmark: Near Jogeshwari East Railway Station, Mumbai - 400060", 
+            coordinates: [19.1590, 72.8500] 
+        }
+    ],
+    "fitness-wellness": [
+        { 
+            name: "Dr. Anjali Sharma", 
+            specialty: "Fitness Trainer", 
+            contact: "+91 930 654 3210", 
+            address: "Sharma Fitness Studio, Jogeshwari West, Landmark: Near Jogeshwari West Railway Station, Mumbai - 400102", 
+            coordinates: [19.1535, 72.8460] 
+        },
+        { 
+            name: "Dr. Sunil Mehta", 
+            specialty: "Fitness Trainer", 
+            contact: "+91 925 777 8888", 
+            address: "Mehta Fitness Center, Jogeshwari East, Landmark: Near Jogeshwari East Railway Station, Mumbai - 400060", 
+            coordinates: [19.1575, 72.8495] 
+        }
+    ]
+},
+
+            "santacruz": {
+    "skin-specialist": [
+        { 
+            name: "Dr. Ayesha Patel", 
+            specialty: "Dermatologist", 
+            contact: "+91 987 654 3210", 
+            address: "Santacruz West, Mumbai", 
+            coordinates: [19.0870, 72.8365] 
+        },
+        { 
+            name: "Dr. Rajesh Verma", 
+            specialty: "Dermatologist", 
+            contact: "+91 981 234 5678", 
+            address: "Verma Skin Clinic, Santacruz East, Landmark: Near Santacruz East Railway Station, Mumbai - 400055", 
+            coordinates: [19.0850, 72.8395] 
+        }
+    ],
+    "eye-specialist": [
+        { 
+            name: "Dr. Neha Joshi", 
+            specialty: "Ophthalmologist", 
+            contact: "+91 925 763 1903", 
+            address: "Santacruz West, Mumbai", 
+            coordinates: [19.0885, 72.8380] 
+        },
+        { 
+            name: "Dr. Ramesh Patel", 
+            specialty: "Ophthalmologist", 
+            contact: "+91 993 777 2222", 
+            address: "Patel Eye Clinic, Santacruz East, Landmark: Opposite Santacruz East Bus Depot, Mumbai - 400055", 
+            coordinates: [19.0865, 72.8410] 
+        }
+    ],
+    "dentist": [
+        { 
+            name: "Dr. Sandeep Shah", 
+            specialty: "Dentist", 
+            contact: "+91 981 234 5678", 
+            address: "Santacruz West, Mumbai", 
+            coordinates: [19.0875, 72.8370] 
+        },
+        { 
+            name: "Dr. Priya Soni", 
+            specialty: "Dentist", 
+            contact: "+91 932 876 5432", 
+            address: "Soni Dental Clinic, Santacruz East, Landmark: Near Santacruz East Railway Station, Mumbai - 400055", 
+            coordinates: [19.0855, 72.8390] 
+        }
+    ],
+    "fitness-wellness": [
+        { 
+            name: "Dr. Anjali Mehta", 
+            specialty: "Fitness Trainer", 
+            contact: "+91 930 654 3210", 
+            address: "Santacruz West, Mumbai", 
+            coordinates: [19.0890, 72.8360] 
+        },
+        { 
+            name: "Dr. Sunil Agarwal", 
+            specialty: "Fitness Trainer", 
+            contact: "+91 925 777 8888", 
+            address: "Agarwal Fitness Center, Santacruz East, Landmark: Near Santacruz East Bus Depot, Mumbai - 400055", 
+            coordinates: [19.0845, 72.8400] 
+        }
+    ]
+},
+
+            "dahisar": {
+    "skin-specialist": [
+        { 
+            name: "Dr. Priya Deshmukh", 
+            specialty: "Dermatologist", 
+            contact: "+91 993 234 5678", 
+            address: "Dahisar West, Mumbai", 
+            coordinates: [19.2880, 72.8580] 
+        },
+        { 
+            name: "Dr. Anil Mehta", 
+            specialty: "Dermatologist", 
+            contact: "+91 986 543 2109", 
+            address: "Mehta Skin Clinic, Dahisar East, Landmark: Near Dahisar East Railway Station, Mumbai - 400068", 
+            coordinates: [19.2855, 72.8600] 
+        }
+    ],
+    "eye-specialist": [
+        { 
+            name: "Dr. Ramesh Joshi", 
+            specialty: "Ophthalmologist", 
+            contact: "+91 982 323 1234", 
+            address: "Dahisar West, Mumbai", 
+            coordinates: [19.2890, 72.8575] 
+        },
+        { 
+            name: "Dr. Shweta Rao", 
+            specialty: "Ophthalmologist", 
+            contact: "+91 987 765 4321", 
+            address: "Rao Eye Clinic, Dahisar East, Landmark: Opposite Dahisar East Bus Depot, Mumbai - 400068", 
+            coordinates: [19.2860, 72.8605] 
+        }
+    ],
+    "dentist": [
+        { 
+            name: "Dr. Kamal Yadav", 
+            specialty: "Dentist", 
+            contact: "+91 932 111 2233", 
+            address: "Dahisar West, Mumbai", 
+            coordinates: [19.2895, 72.8560] 
+        },
+        { 
+            name: "Dr. Neha Soni", 
+            specialty: "Dentist", 
+            contact: "+91 990 555 6677", 
+            address: "Soni Dental Clinic, Dahisar East, Landmark: Near Dahisar East Market, Mumbai - 400068", 
+            coordinates: [19.2850, 72.8590] 
+        }
+    ],
+    "fitness-wellness": [
+        { 
+            name: "Dr. Amit Bansal", 
+            specialty: "Fitness Trainer", 
+            contact: "+91 996 876 5432", 
+            address: "Dahisar West, Mumbai", 
+            coordinates: [19.2900, 72.8555] 
+        },
+        { 
+            name: "Dr. Rekha Malhotra", 
+            specialty: "Fitness Trainer", 
+            contact: "+91 988 777 8888", 
+            address: "Malhotra Wellness Center, Dahisar East, Landmark: Near Dahisar East Railway Station, Mumbai - 400068", 
+            coordinates: [19.2845, 72.8608] 
+        }
+    ]
+},
+
+            // New locations added
+            "borivali": {
+    "skin-specialist": [
+        { 
+            name: "Dr. Komal Patil", 
+            specialty: "Dermatologist", 
+            contact: "+91 901 234 1234", 
+            address: "Borivali East, Mumbai", 
+            coordinates: [19.2890, 72.8505] 
+        },
+        { 
+            name: "Dr. Vijay Patil", 
+            specialty: "Dermatologist", 
+            contact: "+91 987 654 3210", 
+            address: "Patil Skin Clinic, 2nd Floor, Borivali West, Landmark: Near Borivali West Railway Station, Mumbai - 400092", 
+            coordinates: [19.2885, 72.8500] 
+        }
+    ],
+    "eye-specialist": [
+        { 
+            name: "Dr. Amar Rao", 
+            specialty: "Ophthalmologist", 
+            contact: "+91 998 765 4321", 
+            address: "Borivali West, Mumbai", 
+            coordinates: [19.2925, 72.8540] 
+        },
+        { 
+            name: "Dr. Aarti Deshmukh", 
+            specialty: "Ophthalmologist", 
+            contact: "+91 982 344 5567", 
+            address: "Deshmukh Eye Care, 1st Floor, Borivali East, Landmark: Opposite Borivali East Railway Station, Mumbai - 400066", 
+            coordinates: [19.2905, 72.8530] 
+        }
+    ],
+    "dentist": [
+        { 
+            name: "Dr. Rekha Singh", 
+            specialty: "Dentist", 
+            contact: "+91 932 123 4567", 
+            address: "Borivali East, Mumbai", 
+            coordinates: [19.2912, 72.8520] 
+        },
+        { 
+            name: "Dr. Rajesh Iyer", 
+            specialty: "Dentist", 
+            contact: "+91 993 111 2233", 
+            address: "Iyer Dental Clinic, Shop No. 9, Borivali West, Landmark: Near Borivali West Market, Mumbai - 400092", 
+            coordinates: [19.2920, 72.8545] 
+        }
+    ],
+    "fitness-wellness": [
+        { 
+            name: "Dr. Sunil Kumar", 
+            specialty: "Fitness Trainer", 
+            contact: "+91 930 876 5432", 
+            address: "Borivali West, Mumbai", 
+            coordinates: [19.2900, 72.8535] 
+        },
+        { 
+            name: "Dr. Rekha Joshi", 
+            specialty: "Fitness Trainer", 
+            contact: "+91 990 555 6677", 
+            address: "Joshi Wellness Center, 3rd Floor, Borivali East, Landmark: Near Borivali East Bus Depot, Mumbai - 400066", 
+            coordinates: [19.2895, 72.8508] 
+        }
+    ]
+},
+
+            "thane": {
+    "skin-specialist": [
+        { 
+            name: "Dr. Ramesh Desai", 
+            specialty: "Dermatologist", 
+            contact: "+91 902 333 4444", 
+            address: "Desai Skin Clinic, 4th Floor, Thane West, Landmark: Near Thane West Railway Station, Mumbai - 400601", 
+            coordinates: [19.2185, 72.9785] 
+        }
+    ],
+    "eye-specialist": [
+        { 
+            name: "Dr. Kavita Shah", 
+            specialty: "Ophthalmologist", 
+            contact: "+91 990 123 4567", 
+            address: "Shah Eye Clinic, 2nd Floor, Thane East, Landmark: Near Thane Railway Station, Mumbai - 400603", 
+            coordinates: [19.2200, 72.9800] 
+        }
+    ],
+    "dentist": [
+        { 
+            name: "Dr. Ashok Mehta", 
+            specialty: "Dentist", 
+            contact: "+91 981 234 5678", 
+            address: "Mehta Dental Clinic, Shop No. 15, Thane West, Landmark: Near Teen Hatti, Mumbai - 400602", 
+            coordinates: [19.2195, 72.9790] 
+        }
+    ],
+    "fitness-wellness": [
+        { 
+            name: "Dr. Priya Deshmukh", 
+            specialty: "Fitness Trainer", 
+            contact: "+91 993 777 8888", 
+            address: "Deshmukh Wellness Center, 1st Floor, Thane West, Landmark: Near Korum Mall, Mumbai - 400607", 
+            coordinates: [19.2180, 72.9810] 
+        }
+    ]
+},
+
+            "goregaon": {
+    "skin-specialist": [
+        { 
+            name: "Dr. Rajesh Mehta", 
+            specialty: "Dermatologist", 
+            contact: "+91 933 876 5432", 
+            address: "Shree Clinic, 12th Floor, Goregaon West, Landmark: Near Oshiwara Bus Depot, Mumbai - 400104", 
+            coordinates: [19.2185, 72.9785] 
+        }
+    ],
+    "eye-specialist": [
+        { 
+            name: "Dr. Neha Desai", 
+            specialty: "Ophthalmologist", 
+            contact: "+91 925 763 1903", 
+            address: "Desai Eye Care Clinic, Shop No. 5, Madhuban Building, Goregaon East, Landmark: Opposite Goregaon East Railway Station, Mumbai - 400063", 
+            coordinates: [19.2200, 72.9800] 
+        }
+    ],
+    "dentist": [
+        { 
+            name: "Dr. Sandeep Yadav", 
+            specialty: "Dentist", 
+            contact: "+91 981 234 5678", 
+            address: "Agarwal Dental Clinic, 2nd Floor, Shreeji Complex, Goregaon West, Landmark: Near Oberoi Mall, Mumbai - 400062", 
+            coordinates: [19.2195, 72.9790] 
+        }
+    ],
+    "fitness-wellness": [
+        { 
+            name: "Dr. Anjali Verma", 
+            specialty: "Fitness Trainer", 
+            contact: "+91 930 654 3210", 
+            address: "Tiwari Fitness Studio, 1st Floor, Goregaon East, Landmark: Behind Goregaon Sports Complex, Mumbai - 400065", 
+            coordinates: [19.2180, 72.9810] 
+        }
+    ]
+    },
+
+
+            "andheri": {
+    "skin-specialist": [
+        { 
+            name: "Dr. Ayesha Patel", 
+            specialty: "Dermatologist", 
+            contact: "+91 987 654 3210", 
+            address: "Patel Skin Clinic, 3rd Floor, Andheri West, Landmark: Near Versova Beach, Mumbai - 400061", 
+            coordinates: [19.2185, 72.9785] 
+        }
+    ],
+    "eye-specialist": [
+        { 
+            name: "Dr. Ramesh Kumar", 
+            specialty: "Ophthalmologist", 
+            contact: "+91 981 234 5678", 
+            address: "Kumar Eye Hospital, 2nd Floor, Andheri East, Landmark: Opposite Andheri Railway Station, Mumbai - 400069", 
+            coordinates: [19.2200, 72.9800] 
+        }
+    ],
+    "dentist": [
+        { 
+            name: "Dr. Sushant Agarwal", 
+            specialty: "Dentist", 
+            contact: "+91 991 234 5678", 
+            address: "Agarwal Dental Clinic, Shop No. 8, Andheri West, Landmark: Near Andheri West Metro Station, Mumbai - 400058", 
+            coordinates: [19.2195, 72.9790] 
+        }
+    ],
+    "fitness-wellness": [
+        { 
+            name: "Dr. Priya Sharma", 
+            specialty: "Fitness Trainer", 
+            contact: "+91 902 333 4444", 
+            address: "Priya Wellness Center, 1st Floor, Andheri East, Landmark: Near Marol Naka Metro Station, Mumbai - 400059", 
+            coordinates: [19.2180, 72.9810] 
+        }
+    ]
+},
+
+            "dadar": {
+    "skin-specialist": [
+        { 
+            name: "Dr. Sanjay Verma", 
+            specialty: "Dermatologist", 
+            contact: "+91 922 111 2233", 
+            address: "Verma Skin Clinic, 2nd Floor, Dadar West, Landmark: Near Dadar Railway Station, Mumbai - 400028", 
+            coordinates: [19.2185, 72.9785] 
+        }
+    ],
+    "eye-specialist": [
+        { 
+            name: "Dr. Rina Shah", 
+            specialty: "Ophthalmologist", 
+            contact: "+91 982 344 5566", 
+            address: "Shah Eye Care, 1st Floor, Dadar East, Landmark: Opposite Dadar East Railway Station, Mumbai - 400014", 
+            coordinates: [19.2200, 72.9800] 
+        }
+    ],
+    "dentist": [
+        { 
+            name: "Dr. Amit Sharma", 
+            specialty: "Dentist", 
+            contact: "+91 993 775 8899", 
+            address: "Sharma Dental Clinic, Shop No. 3, Dadar West, Landmark: Near Shivaji Park, Mumbai - 400031", 
+            coordinates: [19.2195, 72.9790] 
+        }
+    ],
+    "fitness-wellness": [
+        { 
+            name: "Dr. Neha Joshi", 
+            specialty: "Fitness Trainer", 
+            contact: "+91 992 566 7788", 
+            address: "Joshi Wellness Center, 3rd Floor, Dadar East, Landmark: Near Dadar Metro Station, Mumbai - 400015", 
+            coordinates: [19.2180, 72.9810] 
+        }
+    ]
+}
+
+            // Add Andheri, Goregaon, Bandra, Dadar in similar format
+        };
+
+        // Handle the location input
+        document.getElementById('location-btn').addEventListener('click', function() {
+            var locationInput = document.getElementById('location-input').value.toLowerCase().trim();
+
+            // Check if the location is valid
+            if (locations[locationInput]) {
+                // Show the specialty selection dropdown
+                document.getElementById('specialty-container').style.display = 'block';
+                
+                // Event listener for specialty selection
+                document.getElementById('specialty-select').addEventListener('change', function() {
+                    var selectedSpecialty = this.value;
+
+                    if (selectedSpecialty) {
+                        // Clear the map
+                        map.eachLayer(function(layer) {
+                            if (layer instanceof L.Marker) {
+                                map.removeLayer(layer);
+                            }
+                        });
+
+                        // Add markers for the selected specialty
+                        locations[locationInput][selectedSpecialty].forEach(function(location) {
+                            var popupContent = `
+                                <strong>${location.name}</strong><br>
+                                <em>${location.specialty}</em><br>
+                                Contact: ${location.contact}<br>
+                                Address: ${location.address}
+                            `;
+                            L.marker(location.coordinates).addTo(map).bindPopup(popupContent);
+                        });
+
+                        // Zoom to the first location of the selected specialty
+                        var firstLocation = locations[locationInput][selectedSpecialty][0];
+                        map.setView(firstLocation.coordinates, 14);
+                    } else {
+                        alert('Please select a specialty!');
+                    }
+                });
+            } else {
+                alert('Please enter a valid location!');
+            }
+        });
+    </script>
+</body>
+</html>
